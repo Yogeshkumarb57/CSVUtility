@@ -1,9 +1,14 @@
 package com.utilities.model;
 
+import com.opencsv.bean.CsvBindByName;
+
 public class Person {
 
+    @CsvBindByName(column = PersonConstant.NAME)
     private String name;
+    @CsvBindByName(column = PersonConstant.ADDRESS)
     private String address;
+    @CsvBindByName(column = PersonConstant.EMAIL_ID)
     private String emailId;
 
     public String getName() {

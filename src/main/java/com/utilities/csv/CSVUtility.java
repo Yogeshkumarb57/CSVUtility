@@ -10,5 +10,5 @@ public interface CSVUtility {
 
     List<Person> readIntoList(final InputStream inputStream, final Character separator);
 
-    OutputStream writeFromList(final List<Person> list, final Character separator);
+    Boolean writeFromList(final List<Person> list, final Character separator, final String path);
 }

@@ -1,23 +1,21 @@
 package com.utilities;
 
+import com.utilities.csv.CSVUtility;
+import com.utilities.csv.CSVUtilityImpl;
+import com.utilities.model.Person;
+
 import java.io.InputStream;
+import java.util.List;
 
-/**
- * Hello world!
- *
- */
-public class CSVUtilityTestApp
-{
-    private static InputStream inputStream = null;
-    private static ClassLoader classLoader = null;
+public class CSVUtilityTestApp {
 
-    static {
-        classLoader = Thread.currentThread().getContextClassLoader();
-        inputStream = classLoader.getResourceAsStream("/PersonData.csv");
-    }
+    public static void main(String[] args) throws Exception {
 
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("PersonData.csv");
+        CSVUtility csvUtility = new CSVUtilityImpl();
+        List<Person> personList = csvUtility.readIntoList(inputStream, ',');
+        System.out.println("FILE WRITE SUCCESS :: " + csvUtility.writeFromList(personList, ',', "./src/main/resources/person.csv"));
+
     }
 }
